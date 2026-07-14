@@ -1,34 +1,14 @@
-/*
-  Smart Classroom Occupancy System
-  ESP32 + 2x IR sensors (directional people counting) + DHT22 + fan (via relay) + Thinger.io
-
-  Wiring:
-    IR sensor 1 (outer/corridor)  OUT -> GPIO14
-    IR sensor 2 (inner/room)      OUT -> GPIO25
-    DHT22                         DATA -> GPIO4 (10k pull-up to VCC)
-    Fan control (via relay IN)    -> GPIO33
-
-  IR1 then IR2 = person entered. IR2 then IR1 = person left.
-  Most IR obstacle modules are ACTIVE LOW (output goes LOW when beam is broken).
-  Set BEAM_BROKEN to HIGH below if yours behaves the opposite way.
-
-  See README.md for full wiring details and setup instructions.
-*/
 #include <Arduino.h>
 #include <ThingerESP32.h>
 #include <DHT.h>
 
-// ---------- Thinger.io credentials ----------
-// Get these from your Thinger.io account and device setup
 #define USERNAME "YOUR_THINGER_USERNAME"
 #define DEVICE_ID "YOUR_DEVICE_ID"
 #define DEVICE_CREDENTIAL "YOUR_DEVICE_CREDENTIAL"
 
-// ---------- WiFi credentials ----------
 #define SSID "YOUR_WIFI_SSID"
 #define SSID_PASSWORD "YOUR_WIFI_PASSWORD"
 
-// ---------- Pins ----------
 #define IR1_PIN 14
 #define IR2_PIN 25
 #define DHT_PIN 4
